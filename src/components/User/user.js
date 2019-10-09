@@ -9,14 +9,14 @@ import Slide from 'react-reveal/Slide'
 
 var axios = require('axios');
 var ipfsClient = require('ipfs-http-client');
-var ipfs = ipfsClient({ host:'ipfs.infura.io', port: 5001, protocol: 'https' });
+var ipfs = ipfsClient({ host:'ipfs.infura.io', port: 5001, protocol: 'https', timeout: 20 });
 
 class User extends Component{
 
- /* async componentWillMount(){
+  async componentWillMount(){
     await this.loadWeb3();
     await this.loadBlockchainData();
-  }*/
+  }
 
   state={
     title : null,
@@ -37,6 +37,7 @@ class User extends Component{
   constructor(props) {
     super(props);
     this.getData = this.getData.bind(this);
+    this.onSubmit2 = this.onSubmit2.bind(this);
   } 
 
   componentDidMount(){
@@ -100,8 +101,27 @@ class User extends Component{
     }
   }
 
-  onSubmit2 = () => {
+    onSubmit2 = (event) => {
     console.log("hey there")
+    const title = document.getElementById('title').value;
+    this.setState({title});
+    event.preventDefault();
+    const data = document.getElementById('data').value;
+    const key = this.state.account + title + this.state.email
+    console.log(key)
+    var encrypted = CryptoJS.AES.encrypt(data, key).toString();
+    this.setState({data: encrypted});
+    console.log(encrypted);
+    ipfs.add(encrypted, (error,result) => {
+      console.log("ipfs result", result);
+      const Hash = result[0].hash;
+      if(error){
+        console.error(error);
+        return;
+      }
+      console.log(Hash, this.state.title, this.state.contract);
+      this.state.contract.methods._setHash(this.state.title, Hash).send({from: this.state.account})
+    })
   }
 
   onSubmit = (event) => {
@@ -116,7 +136,7 @@ class User extends Component{
         console.error(error);
         return;
       }
-      console.log(Hash, this.state.title, this.state.contract);
+      console.log(Hash);
       this.state.contract.methods._setHash(this.state.title, Hash).send({from: this.state.account})
     })
   }
@@ -206,7 +226,7 @@ class User extends Component{
         <div className="row mt-5">
           <div className="col">
             <div className="input-wrapper">
-              <textarea className="py-3 px-2" type="text" rows="6"  style={{width:"100%"}} placeholder="Enter data"></textarea>
+              <textarea className="py-3 px-2" type="text" rows="6"  style={{width:"100%"}} id="data" placeholder="Enter data"></textarea>
             </div>
           </div>
         </div> : ''}

@@ -6,10 +6,15 @@ class Chart extends Component{
     constructor(props){
         super(props)
             this.state = {
-                labels : ['lable1' , 'label2' , 'label3', 'label4'],
+                labels : ['Company vulnerability to cyber attacks' ,
+                        'Internal controls and data protection policies' , 
+                        'Cost of recovery from cyber attack', 
+                        'Compiling with global information security regulations',
+                        'IRS vulnerability to cyber attacks',
+                        'Obtaining cyber insurance'],
                 datasets :[{
-                    data : [200,400,700,600],
-                    backgroundColor: ['red','blue','green','pink']
+                    data : [40,31,16,9,4,1],
+                    backgroundColor: ['red','blue','green','pink', 'grey', 'violet']
                 }]
             
         }
