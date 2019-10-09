@@ -13,10 +13,10 @@ var ipfs = ipfsClient({ host:'ipfs.infura.io', port: 5001, protocol: 'https' });
 
 class User extends Component{
 
-  async componentWillMount(){
+ /* async componentWillMount(){
     await this.loadWeb3();
     await this.loadBlockchainData();
-  }
+  }*/
 
   state={
     title : null,
@@ -28,6 +28,8 @@ class User extends Component{
     email : '',
     secureData : false,
     getData : false,
+    storefile : false,
+    storeData : false,
     dataSuccess : false,
     dataValue : ""
   }
@@ -98,6 +100,10 @@ class User extends Component{
     }
   }
 
+  onSubmit2 = () => {
+    console.log("hey there")
+  }
+
   onSubmit = (event) => {
     const title = document.getElementById('title').value;
     this.setState({title});
@@ -127,6 +133,21 @@ class User extends Component{
     let x = this.state.getData;
     this.setState({
       getData : !x
+    })
+  }
+
+  toggleData = () => {
+    
+    this.setState({
+      storeData : true,
+      storefile : false
+    })
+  }
+
+  toggleFile = () => {
+    this.setState({
+      storeData : false,
+      storefile : true
     })
   }
    
@@ -168,24 +189,50 @@ class User extends Component{
           </div>
         </div>
         <div className="row mt-5">
+            <div className="col">
+              <button className="btn btn-block btn-outline-success" onClick={this.toggleData}>
+                Enter data
+              </button>
+            </div>
+        </div>
+        <div className="row mt-5">
+            <div className="col">
+              <button className="btn btn-block btn-outline-success" onClick={this.toggleFile}>
+                Choose File
+              </button>
+            </div>
+        </div>
+        {this.state.storeData ?
+        <div className="row mt-5">
           <div className="col">
             <div className="input-wrapper">
               <textarea className="py-3 px-2" type="text" rows="6"  style={{width:"100%"}} placeholder="Enter data"></textarea>
             </div>
           </div>
-        </div>
+        </div> : ''}
+        {this.state.storefile ? 
         <div className="row mt-5">
           <div className="col">
             <div className="input-wrapper">
               <input className="py-3 px-2" type="file" style={{width:"100%"}} onChange={this.fileCapture} placeholder="Enter data"></input>
             </div>
           </div>
-        </div>
+        </div> : ''}
+
+
+        {this.state.storefile ? 
         <div className="row mt-4">
           <div className="col">
             <button className="btn btn-outline-danger py-3 px-2 btn-block" onClick={this.onSubmit}>Secure</button>
           </div>
+        </div> : 
+
+        <div className="row mt-4">
+          <div className="col">
+            <button className="btn btn-outline-danger py-3 px-2 btn-block" onClick={this.onSubmit2}>Secure</button>
+          </div>
         </div>
+      }
         </Slide>
       )
       
