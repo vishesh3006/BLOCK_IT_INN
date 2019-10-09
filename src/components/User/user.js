@@ -13,10 +13,10 @@ var ipfs = ipfsClient({ host:'ipfs.infura.io', port: 5001, protocol: 'https' });
 
 class User extends Component{
 
-  /*async componentWillMount(){
+  async componentWillMount(){
     await this.loadWeb3();
     await this.loadBlockchainData();
-  }*/
+  }
 
   state={
     title : null,
@@ -134,15 +134,18 @@ class User extends Component{
   async getData() {
     if(document.getElementById("cp")){
         const cp = document.getElementById("cp").value;
-        const key = this.state.account + cp;
+        const key = this.state.account + cp + this.state.email;
         console.log(cp);
         const Hash = await this.state.contract.methods._getHash(cp).call()
         console.log(Hash)
+        var self = this;
         axios.get("https://ipfs.infura.io/ipfs/" + Hash)
         .then(function(result) {
-          var decrypted = CryptoJS.AES.decrypt(result.data, key).toString(CryptoJS.enc.Latin1);
+          const decrypted = CryptoJS.AES.decrypt(result.data, key).toString(CryptoJS.enc.Latin1);
           console.log(decrypted);
+          self.setState({dataSuccess: true, dataValue: decrypted});
        })
+      
     }
   }
 
