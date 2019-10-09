@@ -1,0 +1,38 @@
+/* Styles go here */
+
+body{
+    background: blue;
+}
+
+.block-heading{
+    font-family: 'Anton', sans-serif;
+    color: white;
+    font-size: 150px;
+    letter-spacing: 2.5px;
+}
+
+.common-heading{
+
+    font-family: 'Bree Serif', serif;
+    color: blue;
+    font-size: 100px;
+}
+
+.card-hover{
+    transition: all .3s;
+    transform: translate(0);
+    cursor: pointer;
+}
+
+.card-hover :hover{
+    
+    transform: translateY(-5px) scale(1.2);
+
+}
+
+.sec-user{
+    background: linear-gradient(to right,#42275a , #734b6d);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
