@@ -13,6 +13,11 @@ import {
   DropdownItem } from 'reactstrap';
 
   import { firebase } from '../../firebase'
+  import { scroller } from 'react-scroll'
+  import User from '../../images/man-user.png'
+  import List from '@material-ui/core/List';
+  import ListItem from '@material-ui/core/ListItem';
+
 
  export default class AppBar extends React.Component {
   constructor(props) {
@@ -20,9 +25,17 @@ import {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      openUserPanel : false,
+      userPanel : null
     };
   }
+
+  componentDidMount(){
+
+    
+  }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -41,49 +54,76 @@ import {
       })
   }
 
+  scrollToElement = (event,element) => {
+      event.preventDefault()
+      scroller.scrollTo(element,{
+        duration : 1500,
+        delay : 100,
+        offset : -150,
+        smooth : true
+      })
+  }
+
+  handleUserPanel = (event) => {
+    event.preventDefault()
+    const x = this.state.openUserPanel;
+    this.setState({
+      openUserPanel : !x
+    })
+
+
+  }
+
   render() {
+      console.log(this.props)
     return (
       <div>
-        <Navbar color="transparent" light expand="md">
-          <NavbarBrand href="/">BETA-TESTERS</NavbarBrand>
+        <Navbar color="dark" light expand="md">
+          <NavbarBrand href="/" style={{color:"white"}}>BLOCKITIN</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-3 text-white" navbar style={{width:"100%"}}>
               <NavItem className="text-light">
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href=""  style={{color:"white"}} onClick={(event) => this.scrollToElement(event,'why')}>WHY US</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href=""  style={{color:"white"}} onClick={(event) => this.scrollToElement(event,'how')}>HOW It WORKS</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="" style={{color:"white"}} onClick={(event) => this.scrollToElement(event,'about')}>ABOUT</NavLink>
+              </NavItem>
               {!this.props.user ? 
               <NavItem className="ml-md-auto">
-                <NavLink  href="/login">Login</NavLink>
+                <NavLink  href="/login" style={{color:"white"}}>LOGIN</NavLink>
               </NavItem> : null}
               {!this.props.user ? 
               <NavItem className="">
-                <NavLink  href="">Signup</NavLink>
+                <NavLink  href="/signup" style={{color:"white"}}>SIGNUP</NavLink>
               </NavItem> : null }
               
               {this.props.user ? 
               <NavItem className=" ml-md-auto">
-                <NavLink  href="" onClick={(event) => this.handleLogout(event)}>Signout</NavLink>
+                <NavLink  href=""  style={{color:"white"}}>
+                  <div className="signIn" onClick={(event) => this.handleUserPanel(event)}>
+                    <img src={User} className="img-fluid"></img> 
+                  </div>
+                  {this.state.openUserPanel ? 
+                    <div style={{position:"absolute",marginRight:"25px",background:"white"}}>
+                      <div className="" style={{background:"white",padding:"10px 15px",color:"black",
+                        fontSize:"20px", marginTop:"10px",marginLeft:"-100px",borderRadius:"5px"}}>
+                        {this.props.user.email}
+                      </div>
+                      <div className="" style={{background:"white",padding:"10px 15px",color:"black",
+                        fontSize:"20px", marginTop:"10px",marginLeft:"-100px",borderRadius:"5px"}}>
+                        {this.props.user.uid}
+                      </div>
+                      <div className="" style={{background:"white",padding:"10px 15px",color:"black",
+                        fontSize:"20px", marginTop:"10px",marginLeft:"-100px",borderRadius:"5px"}}>
+                        SIGNOUT
+                      </div>
+                    </div>
+                    : ''}
+                </NavLink>
               </NavItem> : null }
             </Nav>
           </Collapse>

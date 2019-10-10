@@ -6,6 +6,8 @@ import block from '../../abis/B_lockItInn.json';
 import CryptoJS from 'crypto-js';
 import Web3 from 'web3';
 import Slide from 'react-reveal/Slide'
+import Image from '../../images/encrypt.png'
+import Lock from '../../images/lock1.jpg'
 
 var axios = require('axios');
 var ipfsClient = require('ipfs-http-client');
@@ -13,10 +15,10 @@ var ipfs = ipfsClient({ host:'ipfs.infura.io', port: 5001, protocol: 'https', ti
 
 class User extends Component{
 
-  async componentWillMount(){
+ /* async componentWillMount(){
     await this.loadWeb3();
     await this.loadBlockchainData();
-  }
+  } */
 
   state={
     title : null,
@@ -245,14 +247,16 @@ class User extends Component{
           <div className="col">
             <button className="btn btn-outline-danger py-3 px-2 btn-block" onClick={this.onSubmit}>Secure</button>
           </div>
-        </div> : 
+        </div> : ''}
+
+        {this.state.storeData ?
 
         <div className="row mt-4">
           <div className="col">
             <button className="btn btn-outline-danger py-3 px-2 btn-block" onClick={this.onSubmit2}>Secure</button>
           </div>
-        </div>
-      }
+        </div> : ''}
+      
         </Slide>
       )
       
@@ -293,23 +297,91 @@ class User extends Component{
 
     return(
       <>
+
         <section className="p-5 sec-user">
-          <div className="container-fluid">
-            <div className='row'>
-                <div className="col-12 col-md-6 text-center">
-                  <div className="card p-4 card-hover" onClick={this.toggleSecureData}>
-                  <h1>Secure New Data</h1>
-                  </div>
-                  {secureData}
-                </div>
-              
-                <div className="col-12 col-md-6 text-center">
-                  <div className="card p-4 card-hover" onClick={this.toggleGetData}>
-                <h1>Get Existing Data</h1>
-                </div>
-                {getData}
+          <div className="container">
+            <div className="row">
+              <div className="col-12 col-md-6">
+                <div className="button-wrapper">
+                    <div className="button">
+                        <div className="button-header mb-4 text-center" style={{fontWeight:"100",fontSize:"40px"}}>
+                          Secure Data
+                        </div>
+                        <div className="button-image">
+                        <i className="fa fa-lock fa-5x"></i>
+                         
+                        </div>
+                        <div className="button-text">
+                          now secure your data as you will not even believ iy is posisbdnnd
+                        </div>
+                        <div className="button-button text-center mt-3">
+                          <button className="btn btn-primary mx-auto btn-block" onClick={this.toggleSecureData} style={{width:"60%"}}>Secure</button>
+                        </div>
+                    </div>
+                    {secureData}
+                </div>   
+              </div>
+              <div className="col-12 col-md-6">
+                <div className="button-wrapper">
+                    <div className="button">
+                        <div className="button-header mb-4 text-center" style={{fontWeight:"100",fontSize:"40px"}}>
+                          Get Data
+                        </div>
+                        <div className="button-image">
+                        <i className="fa fa-file fa-5x"></i>
+                        </div>
+                        <div className="button-text">
+                          now secure your data as you will not even believ iy is posisbdnnd
+                        </div>
+                        <div className="button-button text-center mt-3">
+                          <button className="btn btn-primary mx-auto btn-block" onClick={this.toggleGetData} style={{width:"60%"}}>Secure</button>
+                        </div>
+                    </div>
+                    {getData}
+                </div>   
               </div>
             </div>
+            <div className="row mt-5">
+            <div className="col-12 col-md-6">
+                <div className="button-wrapper">
+                    <div className="button">
+                        <div className="button-header mb-4 text-center" style={{fontWeight:"100",fontSize:"40px"}}>
+                          Share
+                        </div>
+                        <div className="button-image">
+                        <i className="fa fa-share-alt fa-5x"></i>
+                        </div>
+                        <div className="button-text">
+                          now secure your data as you will not even believ iy is posisbdnnd
+                        </div>
+                        <div className="button-button text-center mt-3">
+                          <button className="btn btn-primary mx-auto btn-block"  style={{width:"60%"}}>Secure</button>
+                        </div>
+                    </div>
+                    {getData}
+                </div>   
+              </div>
+              <div className="col-12 col-md-6">
+                <div className="button-wrapper">
+                    <div className="button">
+                        <div className="button-header mb-4 text-center" style={{fontWeight:"100",fontSize:"40px"}}>
+                          Escrow
+                        </div>
+                        <div className="button-image">
+                          <i className="fa fa-arrow-right fa-5x"></i>
+                        </div>
+                        <div className="button-text">
+                          now secure your data as you will not even believ iy is posisbdnnd
+                        </div>
+                        <div className="button-button text-center mt-3">
+                          <button className="btn btn-primary mx-auto btn-block"  style={{width:"60%"}}>Secure</button>
+                        </div>
+                    </div>
+                    
+                </div>   
+              </div>
+            </div>
+            
           </div>
         </section>
       </>
