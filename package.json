@@ -29,6 +29,7 @@
     "react-dom": "16.8.4",
     "react-file-view": "^1.0.0",
     "react-particles-js": "^2.7.0",
+    "react-pie3d": "^1.0.0",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.3",

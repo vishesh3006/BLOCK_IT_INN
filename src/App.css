@@ -111,3 +111,10 @@ body{
     width: 30px;
     border-radius: 50%;
 }
+
+.input-user{
+    background: rgba(255,255,255,.8);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+}
