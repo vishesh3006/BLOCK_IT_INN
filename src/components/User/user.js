@@ -8,6 +8,9 @@ import Web3 from 'web3';
 import Slide from 'react-reveal/Slide'
 import Image from '../../images/encrypt.png'
 import Lock from '../../images/lock1.jpg'
+import Back from '../../images/back.jpg'
+import Back1 from '../../images/back1.jpg'
+import Back3 from '../../images/back3.png'
 
 var axios = require('axios');
 var ipfsClient = require('ipfs-http-client');
@@ -206,20 +209,20 @@ class User extends Component{
         <div className="row mt-5">
           <div className="col">
              <div className="input-wrapper">
-                <input className="py-3 px-2 " name="title" id="title" type="text" style={{width:"100%"}} placeholder="Enter key"></input>
+                <input className="py-3 px-2 input-user " name="title" id="title" type="text" style={{width:"100%"}} placeholder="Enter key"></input>
              </div>
           </div>
         </div>
         <div className="row mt-5">
             <div className="col">
-              <button className="btn btn-block btn-outline-success" onClick={this.toggleData}>
+              <button className="btn btn-block btn-primary" onClick={this.toggleData}>
                 Enter data
               </button>
             </div>
         </div>
         <div className="row mt-5">
             <div className="col">
-              <button className="btn btn-block btn-outline-success" onClick={this.toggleFile}>
+              <button className="btn btn-block btn-primary" onClick={this.toggleFile}>
                 Choose File
               </button>
             </div>
@@ -228,7 +231,8 @@ class User extends Component{
         <div className="row mt-5">
           <div className="col">
             <div className="input-wrapper">
-              <textarea className="py-3 px-2" type="text" rows="6"  style={{width:"100%"}} id="data" placeholder="Enter data"></textarea>
+              <textarea 
+              className="input-user py-3 px-2" type="text" rows="6"  style={{width:"100%"}} id="data" placeholder="Enter data"></textarea>
             </div>
           </div>
         </div> : ''}
@@ -271,7 +275,7 @@ class User extends Component{
           <div className="row mt-5">
             <div className="col">
                <div className="input-wrapper">
-                <input className="py-3 px-2 "  name="cp" id="cp" type="text" style={{width:"100%"}} placeholder="Enter key"></input>
+                <input className="py-3 px-2 input-user"  name="cp" id="cp" type="text" style={{width:"100%"}} placeholder="Enter key"></input>
               </div>
             </div>
           </div>
@@ -284,7 +288,7 @@ class User extends Component{
             <div className="row mt-5">
               <div className="col">
                 <div className="input-wrapper">
-                  <textarea className="py-3 px-2" type="text" rows={10} readOnly value={this.state.dataValue} style={{width:"100%"}}></textarea>
+                  <textarea className="py-3 px-2 input-user" type="text" rows={10} readOnly value={this.state.dataValue} style={{width:"100%"}}></textarea>
                 </div>
               </div>
             </div>
@@ -298,7 +302,12 @@ class User extends Component{
     return(
       <>
 
-        <section className="p-5 sec-user">
+        <section className="p-5 sec-user" style={{
+          background: `url(${Back3})`,
+          backgroundRepeat:"no-repeat",
+          backgroundSize:"cover",
+          zIndex:"-2"
+        }}>
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-6">

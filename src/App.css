@@ -89,7 +89,7 @@ body{
     cursor: pointer;
     border-radius: 15px;
     width: 80%;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.7);
 }
 
 .button-wrapper:hover{
@@ -110,4 +110,11 @@ body{
     height: 30px;
     width: 30px;
     border-radius: 50%;
+}
+
+.input-user{
+    background: rgba(255,255,255,.8);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
 }

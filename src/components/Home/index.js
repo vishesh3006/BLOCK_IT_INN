@@ -14,6 +14,11 @@ import Zoom from 'react-reveal/Zoom'
 import { Element } from 'react-scroll'
 import AppBar from '../ui/appbar'
 import { firebase } from '../../firebase'
+import ES1 from '../../images/es1.png'
+import ES2 from '../../images/es2.png'
+import ES3 from '../../images/es3.png'
+import ES4 from '../../images/es4.png'
+import { Pie3D } from 'react-pie3d'
 
 class Home extends Component  {
 
@@ -33,11 +38,90 @@ class Home extends Component  {
             }}>
            
             <Slide top>
-            <div className="block-heading">
+            <div style={{marginTop:"-20px"}}>
+            <div className="block-heading text-center" style={{display:"block"}}>
                 BlockItIn
+            </div>
+            <div className="text-capitalize text-center" style={{fontSize:"30px",color:"white",fontWeight:"600",marginTop:"-10px"}}>
+                digital blockchain based locker and escrow dapp
+            </div>
             </div>
             </Slide>
             
+            </section>
+            </Element>
+
+            <Element>
+            <section className="p-5">
+                <div className="container">
+                    <div className="row">
+                        <div className="col text-center">
+                            <h3 className="text-capitalize" style={{color:"gray"}}>most advanced digital locker dapp</h3>
+                            <div className="mt-3">
+                            BLOCK-IT-INN is a decentralized alternative to 1Password. 
+                            Keep your passwords and credit cards secured with the power of Blockstack.
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row align-items-center">
+                        <div className="col-12 col-md-4">
+                            <img src={ES1} className="img-fluid" />
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray"}}>
+                                SECURE
+                            </h3>
+                            <div className="mt-3">
+                                BlockItIn runs exclusively on your device (client-side). 
+                                There are no central servers that can be hacked or breached.
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row align-items-center">
+                        
+                        <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray",textAlign:"right"}}>
+                                DECENTRALIZED
+                            </h3>
+                            <div className="mt-3 text-right">
+
+                            You control where your data is hosted. BlockItIn does not store or replicate user data.
+
+
+                            </div>
+                        </div>
+                        <div className="col-12 col-md-4">
+                            <img src={ES2} className="img-fluid" />
+                        </div>
+                    </div>
+                    <div className="row align-items-center">
+                        <div className="col-12 col-md-4">
+                            <img src={ES4} className="img-fluid" />
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray"}}>
+                                SHAREABLE
+                            </h3>
+                            <div className="mt-3">
+                            Be sure that only you and your teammates have access to your passwords and logins.
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row align-items-center">
+                    <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray", textAlign:"right"}}>
+                                ENCRYPTED
+                            </h3>
+                            <div className="mt-3 text-right">
+                            Your data is end-to-end encrypted with keys that only you hold.
+                            </div>
+                        </div>
+                        <div className="col-12 col-md-4">
+                            <img src={ES3} className="img-fluid" />
+                        </div>
+                        
+                    </div>
+                </div>
             </section>
             </Element>
 
@@ -113,6 +197,9 @@ class Home extends Component  {
                         <Zoom delay={200}>
                         <div className="col-md-2 col-12 text-center mb-3">
                             <img className="img-fluid" src={User} style={{height:"150px"}}></img>
+                            <div className="mt-3" style={{fontSize:"30px", color:"white"}}>
+                                user
+                            </div>
                         </div>
                         </Zoom>
                         <Zoom delay={400}>
@@ -128,6 +215,9 @@ class Home extends Component  {
                         <Zoom delay={600}>
                         <div className="col-md-2 col-12 text-center mb-3">
                             <img className="img-fluid" src={encrypt} style={{height:"150px"}}></img>
+                            <div className="mt-3" style={{fontSize:"30px", color:"white"}}>
+                                Encrypted File
+                            </div>
                         </div>
                         </Zoom>
 
@@ -144,6 +234,9 @@ class Home extends Component  {
                         <Zoom delay={1000}>
                         <div className="col-md-2 col-12 text-center mb-3">
                             <img className="img-fluid" src={Distribute} style={{height:"150px"}}></img>
+                            <div className="mt-3" style={{fontSize:"30px", color:"white"}}>
+                                Distribute
+                            </div>
                         </div>
                         </Zoom>
                         
@@ -151,7 +244,7 @@ class Home extends Component  {
 
                         <div className="row mt-5">
                         
-                        <Zoom delay={1200}>
+                        <Zoom delay={1000}>
                         <div className="col-12 text-center mb-3">
                             <img 
                             src={ArrowDown}
@@ -164,9 +257,12 @@ class Home extends Component  {
                         </div>
 
                         <div className="row mt-5">
-                        <Zoom delay={1400}>
+                        <Zoom delay={1200}>
                         <div className="col-12 text-center mb-3">
                             <img className="" src={BlockChain} style={{height:"250px"}}></img>
+                            <div className="mt-3" style={{fontSize:"30px", color:"white"}}>
+                                Blockchain Storage
+                            </div>
                         </div>
                         </Zoom>
                         </div>
