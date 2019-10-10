@@ -8,6 +8,7 @@ import Web3 from 'web3';
 import Slide from 'react-reveal/Slide'
 import Image from '../../images/encrypt.png'
 import Lock from '../../images/lock1.jpg'
+import Back from '../../images/back.jpg'
 
 var axios = require('axios');
 var ipfsClient = require('ipfs-http-client');
@@ -298,7 +299,12 @@ class User extends Component{
     return(
       <>
 
-        <section className="p-5 sec-user">
+        <section className="p-5 sec-user" style={{
+          background: `url(${Back})`,
+          backgroundRepeat:"no-repeat",
+          backgroundSize:"cover",
+          zIndex:"-2"
+        }}>
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-6">

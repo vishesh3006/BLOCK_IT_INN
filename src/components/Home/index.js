@@ -14,6 +14,10 @@ import Zoom from 'react-reveal/Zoom'
 import { Element } from 'react-scroll'
 import AppBar from '../ui/appbar'
 import { firebase } from '../../firebase'
+import ES1 from '../../images/es1.png'
+import ES2 from '../../images/es2.png'
+import ES3 from '../../images/es3.png'
+import ES4 from '../../images/es4.png'
 
 class Home extends Component  {
 
@@ -38,6 +42,71 @@ class Home extends Component  {
             </div>
             </Slide>
             
+            </section>
+            </Element>
+
+            <Element>
+            <section className="p-5">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-12 col-md-6">
+                            <img src={ES1} className="img-fluid" />
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray"}}>
+                                SECURE
+                            </h3>
+                            <div className="mt-3">
+                                BlockItIn runs exclusively on your device (client-side). 
+                                There are no central servers that can be hacked or breached.
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row align-items-center">
+                        
+                        <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray",textAlign:"right"}}>
+                                DECENTRALIZED
+                            </h3>
+                            <div className="mt-3 text-right">
+
+                            You control where your data is hosted. BlockItIn does not store or replicate user data.
+
+
+                            </div>
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <img src={ES2} className="img-fluid" />
+                        </div>
+                    </div>
+                    <div className="row align-items-center">
+                        <div className="col-12 col-md-6">
+                            <img src={ES4} className="img-fluid" />
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray"}}>
+                                SHAREABLE
+                            </h3>
+                            <div className="mt-3">
+                            Be sure that only you and your teammates have access to your passwords and logins.
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row align-items-center">
+                    <div className="col-12 col-md-6">
+                            <h3 style={{color:"gray", textAlign:"right"}}>
+                                ENCRYPTED
+                            </h3>
+                            <div className="mt-3 text-right">
+                            Your data is end-to-end encrypted with keys that only you hold.
+                            </div>
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <img src={ES3} className="img-fluid" />
+                        </div>
+                        
+                    </div>
+                </div>
             </section>
             </Element>
 
