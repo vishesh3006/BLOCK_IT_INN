@@ -22,11 +22,12 @@ class Chart extends Component{
 
     render(){
         return(
-            <div>
+            <div style={{fontSize:"30px"}}>
                 <Pie data={{
                     labels: this.state.labels,
                     datasets : this.state.datasets
                 }}
+                style={{fontSize:"30px"}}
             />
             </div>
         )

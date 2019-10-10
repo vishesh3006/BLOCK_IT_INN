@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField'
 import { firebase } from '../../firebase'
 import Particles from 'react-particles-js'
 import { Button } from '@material-ui/core';
+import { NavLink } from 'react-router-dom'
 
 const particlesOpt = {
         particles : {
@@ -61,7 +62,7 @@ class Login extends Component{
         return(
             <div>
                
-                <div className="container p-5">
+                <div className="container p-5" style={{background:"white",marginTop:"60px",width:"30%",borderRadius:"15px"}}>
                     <div className="row mb-5">
                         <div className="col text-center common-heading" style={{ textTransform:'uppercase' }}>
                             Login
@@ -69,42 +70,62 @@ class Login extends Component{
                     </div>
                     <div className="row">
                         <div className="col text-center">
-                        <TextField
+                        <input 
                             style={{width:"80%"}}
-                            id="outlined-name"
-                            label="Email"
-                            //className={classes.textField}
-                            //value={values.name}
+                            placeholder="Enter email"
                             onChange={(event) => this.handleChange(event,'email')}
-                            margin="normal"
-                            variant="outlined"
-                        />
+                            className="inputLogin"
+                        ></input>
                         </div>
                     </div>
-                    <div className="row">  
+                    <div className="row mt-4">  
                         <div className="col text-center">
-                        <TextField
-                            style={{width : "80%"}}
-                            id="outlined-name"
-                            label="Password"
-                            //className={classes.textField}
-                            //value={values.name}
+                        <input 
+                            style={{width:"80%"}}
+                            type="password"
+                            placeholder="Enter password"
                             onChange={(event) => this.handleChange(event,'password')}
-                            margin="normal"
-                            variant="outlined"
-                        />
+                            className="inputLogin"
+                        ></input>
                         </div>
                     </div>
-                    <div className="row mt-3">
+                    <div className="row mt-2">
+                        <div className="col text-right" style={{marginRight:"30px",color:"gray",fontSize:"14px"}}>
+                            <p>Forgot Password?</p>
+                        </div>
+                    </div>
+                    <div className="row mt-5">
                         <div className="col text-center">
                             <Button className="btn btn-block btn-outline-danger mx-auto" 
-                            style={{width:"60%" ,background:"red"}}
+                            style={{width:"80%" ,background:"linear-gradient(to right,rgba(205,52,181),rgba(68,166,187))",borderRadius:"10px"}}
                             onClick={this.loginHandler}>LOGIN</Button>
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+                        <div className="col text-center">
+                        <i className="fa fa-facebook mx-3 text-primary fa-2x"></i>
+                        <i class="fa fa-twitter mx-3 text-primary fa-2x"></i>
+                        <i class="fa fa-google mx-3 text-danger fa-2x"></i>
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+                        <div className="col text-center" style={{color:"gray",fontSize:"14px"}}>
+                            Have not account yet ?
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+                        <div className="col text-center" style={{color:"gray",fontSize:"14px"}}>
+                            <NavLink to="/singup">
+                            <Button className="btn btn-block btn-outline-danger mx-auto" 
+                            style={{width:"80%" ,background:"linear-gradient(to right,rgba(205,52,181),rgba(68,166,187))",borderRadius:"10px"}}
+                            onClick={this.loginHandler}>Signup</Button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
             
-                <Particles params={particlesOpt} style={{background : 'linear-gradient(to right,rgba(205,52,181),rgba(68,166,187))' ,position :"absolute" , top:"0" , left : "0", zIndex:"-10"}} />
+                <Particles params={particlesOpt} style={{height : "200vh" ,background : 'linear-gradient(to right,rgba(205,52,181),rgba(68,166,187))' ,position :"absolute" , top:"0" , left : "0", zIndex:"-10"}} />
+                <Particles params={particlesOpt} style={{height : "200vh" ,background : 'linear-gradient(to right,rgba(205,52,181),rgba(68,166,187))' ,position :"absolute" , top:"0" , left : "0", zIndex:"-10"}} />
                
 
             </div>
