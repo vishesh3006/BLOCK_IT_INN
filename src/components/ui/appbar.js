@@ -131,7 +131,7 @@ import {
                         borderBottom:"1px solid gray"}}>
                         Your Profile
                       </div>
-                      <div className="">
+                      <div className="" style={{color:"black",padding:"5px 15px",fontSize:"20px",paddingBottom:"10px"}} onClick={this.handleLogout}>
                         SIGNOUT
                       </div>
                     </div>

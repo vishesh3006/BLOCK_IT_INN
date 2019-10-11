@@ -14,14 +14,14 @@ import Back3 from '../../images/back3.png'
 
 var axios = require('axios');
 var ipfsClient = require('ipfs-http-client');
-var ipfs = ipfsClient({ host:'ipfs.infura.io', port: 5001, protocol: 'https', timeout: 20 });
+var ipfs = ipfsClient({ host:'ipfs.infura.io', port: 5001, protocol: 'https'});
 
 class User extends Component{
 
- /* async componentWillMount(){
+  async componentWillMount(){
     await this.loadWeb3();
     await this.loadBlockchainData();
-  } */
+  } 
 
   state={
     title : null,
@@ -43,6 +43,7 @@ class User extends Component{
     super(props);
     this.getData = this.getData.bind(this);
     this.onSubmit2 = this.onSubmit2.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   } 
 
   componentDidMount(){
@@ -106,7 +107,7 @@ class User extends Component{
     }
   }
 
-    onSubmit2 = (event) => {
+    async onSubmit2(event){
     console.log("hey there")
     const title = document.getElementById('title').value;
     this.setState({title});
@@ -117,33 +118,32 @@ class User extends Component{
     var encrypted = CryptoJS.AES.encrypt(data, key).toString();
     this.setState({data: encrypted});
     console.log(encrypted);
-    ipfs.add(encrypted, (error,result) => {
-      console.log("ipfs result", result);
-      const Hash = result[0].hash;
-      if(error){
-        console.error(error);
-        return;
-      }
-      console.log(Hash, this.state.title, this.state.contract);
-      this.state.contract.methods._setHash(this.state.title, Hash).send({from: this.state.account})
-    })
+    try{
+      const result = await ipfs.add(encrypted);
+        console.log("ipfs result", result);
+        const Hash = result[0].hash;
+        console.log(Hash, this.state.title, this.state.contract);
+        this.state.contract.methods._setHash(this.state.title, Hash).send({from: this.state.account})
+    }catch(err){
+      console.error(err);
+    }
   }
 
-  onSubmit = (event) => {
+  async onSubmit(event){
     const title = document.getElementById('title').value;
     this.setState({title});
     console.log("submitting the form...");
     event.preventDefault();
-    ipfs.add(this.state.data, (error,result) => {
+    try{
+      const result = await ipfs.add(this.state.data)
+      if(!result) throw new Error("uploading photoNearFileContent failed");
       console.log("ipfs result", result);
       const Hash = result[0].hash;
-      if(error){
-        console.error(error);
-        return;
-      }
-      console.log(Hash);
+      console.log(Hash, this.state.title, this.state.contract);
       this.state.contract.methods._setHash(this.state.title, Hash).send({from: this.state.account})
-    })
+    }catch (err){
+      console.error(err);
+    }
   }
 
   toggleSecureData = () => {
@@ -367,7 +367,7 @@ class User extends Component{
                           <button className="btn btn-primary mx-auto btn-block"  style={{width:"60%"}}>Secure</button>
                         </div>
                     </div>
-                    {getData}
+                    
                 </div>   
               </div>
               <div className="col-12 col-md-6">
